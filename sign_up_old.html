@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html >
+<head>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDxVvg6RlcQuZDQ018QAdcHo1i09L5ly0Q",
+    authDomain: "spot-v1.firebaseapp.com",
+    databaseURL: "https://spot-v1.firebaseio.com",
+    projectId: "spot-v1",
+    storageBucket: "spot-v1.appspot.com",
+    messagingSenderId: "119293124758"
+  };
+  firebase.initializeApp(config);
+</script>
+ <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+ <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD5fSOcwZfe1bUCFQnH1PvhwlFaYhRo73I&callback=initMap">
+    </script>
+  <title> Business Registration </title>
+</head>
+
+<body>
+ <script type="text/javascript">
+// Get a reference to the database service
+var database = firebase.database();
+function writeUserData(name, email, password, abn, phoneNumber, store_no, street_no, street_name, suburb, postCode, active, type, aboutUs, coverImageurl, restaurantType, profileImageurl, coverImageurl, availableTime, longitude ,latitude) {
+  event.preventDefault();
+  var new_ref = database.ref('DF/Users/').push();
+    new_ref.set({
+    email: document.getElementById("UserEmail").value,
+    password:  document.getElementById("Rpassword").value,
+    name: document.getElementById("ResName").value,
+	abn: document.getElementById("RABN").value, 
+	phoneNumber: document.getElementById("Rphone").value,
+        subrub: document.getElementById("Rsuburb").value,
+	postCode : document.getElementById("Rpostcode").value,
+	location :"",
+	menu: "",
+	pending: "",
+	active: "0",
+	type: "restaurant",
+	aboutUs: "",
+	coverImageurl: "",
+	restaurantType: "",
+	profileImageurl: "",
+	availableTime: "",
+	longitude: "144.963408",
+	latitude: "-37.807863"
+  });
+  new_ref.child("menu").set("none");
+  new_ref.child("menu/none").set({none: 'none'});
+  new_ref.child("pending").set({none: 'none'});
+  var SRNO = document.getElementById("RSNo").value;
+  var STNO = document.getElementById("RSTNo").value;
+  var SNAME = document.getElementById("RSname").value;
+  var SUB = document.getElementById("Rsuburb").value;
+  var POSTC = document.getElementById("Rpostcode").value;
+  new_ref.child("location").set(SRNO+"-"+STNO+" "+SNAME+", "+SUB+" "+POSTC+" VIC");
+  });
+  location = 'registration_comp.html';
+}
+/*function initMap(address){
+var geocoder = new google.maps.Geocoder();
+var result = [];
+geocoder.geocode( { 'address': address, 'region': 'AU' }, function(results, status) {
+     if (status == google.maps.GeocoderStatus.OK) {
+         result[0] = results[0].geometry.location.lat();
+         result[1] = results[0].geometry.location.lng();
+     } else {
+         console.log("error");
+     }
+ //    console.log(result);
+    });
+} */  
+</script>
+<div id="logo" >
+<img src="logo.png" style="width:150px;height:130px;">
+
+<h1> Spot </h1>
+<h2> A social media app for food. </h2>
+<br><br>
+</div>
+
+
+<a class = "link" href="index.html"> Home </a>
+&nbsp;&nbsp;
+<a class = "link" href="sign_up.html" style="color:#4EB0AC;"> Business Registration </a>
+&nbsp;&nbsp;
+<a class = "link" href="about_us.html"> About us </a>
+&nbsp;&nbsp;
+<a class = "link" href="contact_us.html" style="float: right;"> Contact us </a>
+<br><br><br><br>
+
+<h3> Business Registration </h3>
+<div class="text">
+<form name="RegistrationForm" action="registration_comp.html" method="POST" onsubmit= "return writeUserData()">
+		<Table>
+		<tr>
+		<td><h4> Restaurant name: </h4> </td>
+		<td><input type="text" name="ResName" id="ResName" class="textfield" required= "true"= "true"> </td>
+		</tr>
+		<tr>
+		<td></td>
+		</tr>
+		<tr>
+		<td><h4>Email:</h4></td>
+		<td><input type="text" name="UserEmail" id="UserEmail" class="textfield" required= "true"= "true"></td>
+		</tr>
+		<tr>
+		<td></td>
+		</tr>
+		<tr>
+		<td><h4>password:</h4></td>
+		<td><input type="password" name="Rpassword" id="Rpassword" class="textfield" required= "true"= "true"></td>
+		</tr>
+		<tr>
+		<td></td>
+		</tr>
+		<tr>
+		<td><h3 style="	margin-left: 0px;">Restaurant information: </h3></td>
+		<td></td>
+		</tr>
+		<tr>
+		<td><h4>ABN :</h4></td>
+		<td><input type="text" name="RABN" id="RABN" class="textfield" required= "true"></td>
+		</tr>
+		<tr>
+		<td></td>
+		</tr>
+		<tr>
+		<td><h4>Phone number:</h4></td>
+		<td><input type="text" name="Rphone" id="Rphone" class="textfield" required= "true"></td>
+		</tr>
+		<tr>
+		<td></td>
+		</tr>
+		<tr>
+		<td><h4>Store number:</h4></td>
+		<td><input type="text" name="RSNo" id="RSNo" class="textfield" required= "true"></td>
+		</tr>
+		<tr>
+		<td><h4>Street number:</h4></td>
+		<td><input type="text" name="RSTNo" id="RSTNo" class="textfield" required= "true"></td>
+		</tr>
+		<tr>
+		<td><h4>Street name:</h4></td>
+		<td><input type="text" name="RSname" id="RSname" class="textfield" required= "true"></td>
+		</tr>
+		<tr>
+		<td><h4>Suburb:</h4></td>
+		<td><input type="text" name="Rsuburb" id="Rsuburb" class="textfield" required= "true"></td>
+		</tr>
+		<tr>
+		<td><h4>Postcode:</h4></td>
+		<td><input type="text" name="Rpostcode" id="Rpostcode" class="textfield" required= "true"></td>
+		</tr>
+		<tr>
+		<td></td>
+		</tr>
+		</table>
+		<br><br>
+		<br><br>
+		<input type="submit" name="submit" value="submit" class="sub">
+		</form>
+</div>
+
+</body>
+</html>

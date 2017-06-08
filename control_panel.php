@@ -21,17 +21,17 @@
 </div>
 
 
-<a class = "link" href="index.html"> Home </a>
+<a class = "link" href="logout.php"  style="float: right;"> Logout </a> 
+<a class = "link" href="control_panel.php"> Control panel </a> 
 &nbsp;&nbsp;
-<a class = "link" href="sign_up.php"> Business Registration </a>
+<a class = "link" href="msg.php"> Send a message </a>
 &nbsp;&nbsp;
-<a class = "link" href="about_us.php"> About us </a>
-&nbsp;&nbsp;
-<a class = "link" href="contact_us.php" style="float: right;"> Contact us </a>
-
+<a class = "link" href="edit_account.php"> Edit account </a> 
+<br><br><br><br>
+<h3> Admin control panel </h3>
 <div class="text">
-<br><br><br><br><br>
-<p style="font-size: 1.10em; font-weight: 100;">Thank you for registering in Spot application, your information has been submitted and you will be notified by email if your order is accepted or rejected.</p>
+
+<p> Here is a list of the restaurants that waiting your acceptance. </p>
 </div>
 </body>
 </html>
